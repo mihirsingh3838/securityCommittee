@@ -4,64 +4,64 @@ import api from '../utils/api';
 const CommitteeMembers = () => {
   const [members, setMembers] = useState([
     {
-      house: '70',
-      mobile: '9868133456',
-      name: 'Dalvir Aggarwal',
-      designation: 'Chairperson (Pocket Representative)',
+      house: '-',
+      mobile: '9868302404',
+      name: 'Sh. SM Gupta',
+      designation: 'President (Pocket A Security Committee)',
     },
     {
-      house: '62',
-      mobile: '9818307400',
-      name: 'J N Jha',
-      designation: 'Vice-Chairperson (Co-Representative)',
+      house: '-',
+      mobile: '9717240000',
+      name: 'Sh.Ajay Garg',
+      designation: 'Vice-President (Pocket A Security Committee)',
     },
     {
-      house: '211',
-      mobile: '9818129793',
-      name: 'Dinesh Ganotra',
+      house: '-',
+      mobile: '9811094209',
+      name: 'Sh. Ajay Gupta',
       designation: 'Treasurer',
     },
     {
-      house: '208',
-      mobile: '9810975805',
-      name: 'Jitender Kumar Baluja',
-      designation: 'Member',
+      house: '-',
+      mobile: '9899970683',
+      name: 'Sh. Anuj Gera',
+      designation: 'Executive Member',
     },
     {
-      house: '156',
-      mobile: '9811190337',
-      name: 'Shashi Mangla',
-      designation: 'Member',
+      house: '-',
+      mobile: '9910979587',
+      name: 'Sh. Atul Mangla',
+      designation: 'Executive Member',
     },
     {
-      house: '90',
-      mobile: '8527361744',
-      name: 'Shakuntala Ji',
-      designation: 'Member',
+      house: '-',
+      mobile: '9716514139',
+      name: 'Sh. Anuj Rai',
+      designation: 'Executive Member',
     },
+    // {
+    //   house: '149',
+    //   mobile: '9811063264',
+    //   name: 'Ajay Bhaskar',
+    //   designation: 'Member – CCTV Maintenance',
+    // },
+    // {
+    //   house: '83',
+    //   mobile: '9718218987',
+    //   name: 'Raj Kumar Sharma',
+    //   designation: 'Member',
+    // },
+    // {
+    //   house: '114',
+    //   mobile: '9971441882',
+    //   name: 'Ashish',
+    //   designation: 'Member – Street Lighting',
+    // },
     {
-      house: '149',
-      mobile: '9811063264',
-      name: 'Ajay Bhaskar',
-      designation: 'Member – CCTV Maintenance',
-    },
-    {
-      house: '83',
-      mobile: '9718218987',
-      name: 'Raj Kumar Sharma',
-      designation: 'Member',
-    },
-    {
-      house: '114',
-      mobile: '9971441882',
-      name: 'Ashish',
-      designation: 'Member – Street Lighting',
-    },
-    {
-      house: '—',
+      house: '140',
       mobile: '8800367280',
-      name: 'Yogesh Singhal',
-      designation: 'Member',
+      name: 'Sh. Dinesh Sharma',
+      designation: 'Executive Member',
     },
   ]);
   const [loading, setLoading] = useState(false);
@@ -104,9 +104,9 @@ const CommitteeMembers = () => {
         <h2 className="text-xl sm:text-2xl font-bold text-gray-800 flex items-center gap-2">
           <span>👥</span> Committee Members
         </h2>
-        <span className="text-xs sm:text-sm text-gray-600 bg-gray-100 px-3 py-1 rounded-full self-start sm:self-auto">
+        {/* <span className="text-xs sm:text-sm text-gray-600 bg-gray-100 px-3 py-1 rounded-full self-start sm:self-auto">
           Term: 12 Oct 2025 – 11 Oct 2028
-        </span>
+        </span> */}
       </div>
 
       {loading ? (
@@ -148,9 +148,23 @@ const CommitteeMembers = () => {
                     <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
                       <a
                         href={`tel:${member.mobile}`}
-                        className="text-xs sm:text-sm text-blue-600 hover:text-blue-800 hover:underline"
+                        className="flex items-center gap-2 text-xs sm:text-sm text-blue-600 hover:text-blue-800 transition-colors group"
                       >
-                        {member.mobile}
+                        <svg
+                          className="w-4 h-4 text-blue-600 group-hover:text-blue-700 flex-shrink-0"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                          />
+                        </svg>
+                        <span className="hover:underline">{member.mobile}</span>
                       </a>
                     </td>
                     <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">

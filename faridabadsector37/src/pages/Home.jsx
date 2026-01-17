@@ -13,10 +13,10 @@ const Home = () => {
       {/* Hero Section */}
       <div className="text-center mb-8 md:mb-12 px-4">
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
-          Welcome to Your Community Hub
+          Welcome to Your Pocket A Society
         </h1>
         <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed px-2">
-          Connect, Stay Informed, and Build a Better Neighborhood Together — Your One-Stop Portal for Pocket A, Sector 37, Faridabad
+          Connect, Stay Informed, and Build a Better Neighborhood Together — Your One-Stop Portal for Pocket A Parivar, Sector 37, Faridabad
         </p>
       </div>
 

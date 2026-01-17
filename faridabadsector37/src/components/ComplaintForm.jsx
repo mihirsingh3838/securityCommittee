@@ -18,12 +18,12 @@ const ComplaintForm = () => {
   const complaintTypes = [
     'Security Issue',
     'Maintenance',
-    'Parking',
-    'Noise Complaint',
-    'Water/Sewage',
-    'Electricity',
+    // 'Parking',
+    // 'Noise Complaint',
+    // 'Water/Sewage',
+    // 'Electricity',
     'CCTV',
-    'Garbage/Waste',
+    // 'Garbage/Waste',
     'Other',
   ];
 
@@ -87,7 +87,7 @@ const ComplaintForm = () => {
   return (
     <section className="mb-6 md:mb-8">
       <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-        <span>🚨</span> Register Complaint
+        <span>🚨</span> Register your Pocket A Society Complaints
       </h2>
       <div className="bg-white rounded-xl shadow-md p-4 sm:p-6 md:p-8">
         {submitted && (
