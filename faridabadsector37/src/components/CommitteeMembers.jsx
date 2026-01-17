@@ -86,16 +86,21 @@ const CommitteeMembers = () => {
   };
 
   const getDesignationColor = (designation) => {
-    if (designation.toLowerCase().includes('chairperson')) {
-      return 'bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900';
+    const designationLower = designation.toLowerCase();
+    
+    if (designationLower.includes('president')) {
+      return 'bg-gradient-to-r from-amber-500 to-amber-600 text-white';
     }
-    if (designation.toLowerCase().includes('vice')) {
-      return 'bg-gradient-to-r from-blue-400 to-blue-500 text-white';
+    if (designationLower.includes('vice') && designationLower.includes('president')) {
+      return 'bg-gradient-to-r from-blue-500 to-blue-600 text-white';
     }
-    if (designation.toLowerCase().includes('treasurer')) {
-      return 'bg-gradient-to-r from-green-400 to-green-500 text-white';
+    if (designationLower.includes('treasurer')) {
+      return 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white';
     }
-    return 'bg-gray-100 text-gray-700';
+    if (designationLower.includes('executive member') || designationLower.includes('member')) {
+      return 'bg-gradient-to-r from-slate-400 to-slate-500 text-white';
+    }
+    return 'bg-gray-200 text-gray-700';
   };
 
   return (
@@ -115,40 +120,40 @@ const CommitteeMembers = () => {
           <p className="mt-4 text-gray-600">Loading members...</p>
         </div>
       ) : (
-        <div className="bg-white rounded-xl shadow-md overflow-hidden">
+        <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
           <div className="overflow-x-auto -mx-2 sm:mx-0">
             <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gradient-to-r from-gray-700 to-gray-800 text-white">
+              <thead className="bg-gradient-to-r from-slate-600 to-slate-700 text-white">
                 <tr>
-                  <th className="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-semibold uppercase tracking-wider">
+                  <th className="px-4 sm:px-6 py-3 sm:py-4 text-left text-xs font-semibold uppercase tracking-wider">
                     House
                   </th>
-                  <th className="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-semibold uppercase tracking-wider">
+                  <th className="px-4 sm:px-6 py-3 sm:py-4 text-left text-xs font-semibold uppercase tracking-wider">
                     Mobile
                   </th>
-                  <th className="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-semibold uppercase tracking-wider">
+                  <th className="px-4 sm:px-6 py-3 sm:py-4 text-left text-xs font-semibold uppercase tracking-wider">
                     Name
                   </th>
-                  <th className="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-semibold uppercase tracking-wider hidden md:table-cell">
+                  <th className="px-4 sm:px-6 py-3 sm:py-4 text-left text-xs font-semibold uppercase tracking-wider hidden md:table-cell">
                     Designation
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="bg-white divide-y divide-gray-100">
                 {members.map((member, index) => (
                   <tr
                     key={index}
-                    className="hover:bg-gray-50 transition-colors cursor-pointer"
+                    className="hover:bg-blue-50/50 transition-colors"
                   >
-                    <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
-                      <span className="text-xs sm:text-sm font-medium text-gray-900">
+                    <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
+                      <span className="text-xs sm:text-sm font-medium text-gray-700">
                         {member.house}
                       </span>
                     </td>
-                    <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
+                    <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
                       <a
                         href={`tel:${member.mobile}`}
-                        className="flex items-center gap-2 text-xs sm:text-sm text-blue-600 hover:text-blue-800 transition-colors group"
+                        className="flex items-center gap-2 text-xs sm:text-sm text-blue-600 hover:text-blue-700 transition-colors group font-medium"
                       >
                         <svg
                           className="w-4 h-4 text-blue-600 group-hover:text-blue-700 flex-shrink-0"
@@ -167,21 +172,21 @@ const CommitteeMembers = () => {
                         <span className="hover:underline">{member.mobile}</span>
                       </a>
                     </td>
-                    <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
+                    <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
                       <div>
-                        <span className="text-xs sm:text-sm font-medium text-gray-900 block">
+                        <span className="text-xs sm:text-sm font-semibold text-gray-900 block">
                           {member.name}
                         </span>
-                        <span className={`md:hidden inline-flex px-2 py-0.5 text-xs font-semibold rounded-full mt-1 ${getDesignationColor(
+                        <span className={`md:hidden inline-flex px-2.5 py-1 text-xs font-medium rounded-full mt-1.5 shadow-sm ${getDesignationColor(
                           member.designation
                         )}`}>
-                          {member.designation.length > 20 ? member.designation.substring(0, 20) + '...' : member.designation}
+                          {member.designation.length > 25 ? member.designation.substring(0, 25) + '...' : member.designation}
                         </span>
                       </div>
                     </td>
-                    <td className="px-3 sm:px-6 py-3 sm:py-4 hidden md:table-cell">
+                    <td className="px-4 sm:px-6 py-4 hidden md:table-cell">
                       <span
-                        className={`inline-flex px-2 sm:px-3 py-1 text-xs font-semibold rounded-full ${getDesignationColor(
+                        className={`inline-flex px-3 py-1.5 text-xs font-medium rounded-full shadow-sm ${getDesignationColor(
                           member.designation
                         )}`}
                       >

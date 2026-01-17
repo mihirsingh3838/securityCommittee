@@ -4,11 +4,20 @@ import { Link } from 'react-router-dom';
 const QuickAccess = () => {
   const [showEmergencyModal, setShowEmergencyModal] = useState(false);
   const [showUPIModal, setShowUPIModal] = useState(false);
+  const [showWelfareModal, setShowWelfareModal] = useState(false);
+
+  const welfareProjects = [
+    { title: 'CCTVs coverage enhancement', status: 'initiated', icon: '🎥' },
+    { title: 'Lights Installation at Blind Spots', status: 'initiated', icon: '💡' },
+    { title: 'Beautification of Hanuman Vatika', status: 'initiated', icon: '🌳' },
+    { title: 'Guard Room/ Porta Cabin', status: 'proposed', icon: '🏠' },
+    { title: 'Power Back up/Solar panels for CCTVs', status: 'proposed', icon: '☀️' },
+  ];
   
   // Update this with your actual UPI ID and QR code image path
   const upiId = '9891227942@ptyes'; // Replace with actual UPI ID
   const payeeName = 'Archana Rai'; // Replace with actual name
-  const qrCodeImage = '../assets/qr-code.jpeg'; // Replace with actual QR code image path
+  const qrCodeImage = '/qr-code.jpeg'; // QR code image in public folder
 
   const emergencyContacts = [
     { name: 'Police', number: '112', color: 'from-blue-500 to-blue-600' },
@@ -87,28 +96,28 @@ const QuickAccess = () => {
       title: 'View Balance Sheet',
       description: 'Monthly & cumulative financials',
       link: '/balance-sheet',
-      color: 'from-blue-500 to-blue-600',
+      color: 'from-blue-400 to-blue-500',
     },
     {
       icon: '💰',
       title: 'Payment History',
       description: 'Search by House / Mobile / Name',
       link: '/payment-history',
-      color: 'from-green-500 to-green-600',
+      color: 'from-emerald-400 to-emerald-500',
     },
     {
       icon: '🏠',
       title: 'Resident Details',
       description: 'Current occupants & durations',
       link: '/occupant-details',
-      color: 'from-purple-500 to-purple-600',
+      color: 'from-violet-400 to-violet-500',
     },
     {
       icon: '🎥',
       title: 'CCTV Placement & Coverage Layout',
       description: 'Camera map, retention & privacy',
       link: '#',
-      color: 'from-red-500 to-red-600',
+      color: 'from-rose-400 to-rose-500',
     },
     {
       icon: '🏛️',
@@ -116,7 +125,7 @@ const QuickAccess = () => {
       description: 'Official ULB Haryana login (OTP based)',
       link: 'https://ulbharyana.gov.in',
       external: true,
-      color: 'from-orange-500 to-orange-600',
+      color: 'from-amber-400 to-amber-500',
     },
     {
       icon: '🚨',
@@ -124,7 +133,7 @@ const QuickAccess = () => {
       description: 'Quick access to emergency services',
       link: '#',
       isEmergency: true,
-      color: 'from-red-600 to-red-700',
+      color: 'from-red-400 to-red-500',
     },
     {
       icon: '📱',
@@ -132,7 +141,7 @@ const QuickAccess = () => {
       description: 'Register complaints for street lights & sewer',
       link: '#',
       isMCFApp: true,
-      color: 'from-indigo-500 to-indigo-600',
+      color: 'from-indigo-400 to-indigo-500',
     },
     {
       icon: '💳',
@@ -140,7 +149,15 @@ const QuickAccess = () => {
       description: 'Quick UPI payment for monthly security',
       link: '#',
       isUPI: true,
-      color: 'from-teal-500 to-teal-600',
+      color: 'from-cyan-400 to-cyan-500',
+    },
+    {
+      icon: '✨',
+      title: 'Welfare Projects',
+      description: 'Proposed & initiated community projects',
+      link: '#',
+      isWelfare: true,
+      color: 'from-lime-400 to-lime-500',
     },
   ];
 
@@ -193,6 +210,24 @@ const QuickAccess = () => {
               <button
                 key={index}
                 onClick={handleUPIPayment}
+                className={`group relative overflow-hidden rounded-xl bg-gradient-to-br ${item.color} p-4 md:p-6 text-white shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl active:scale-95 text-left`}
+              >
+                <div className="relative z-10">
+                  <div className="text-3xl md:text-4xl mb-2 md:mb-3">{item.icon}</div>
+                  <h3 className="text-base md:text-lg font-semibold mb-1 leading-tight">{item.title}</h3>
+                  <p className="text-xs md:text-sm text-white/90 leading-relaxed">{item.description}</p>
+                </div>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
+              </button>
+            );
+          }
+
+          // Handle Welfare Projects
+          if (item.isWelfare) {
+            return (
+              <button
+                key={index}
+                onClick={() => setShowWelfareModal(true)}
                 className={`group relative overflow-hidden rounded-xl bg-gradient-to-br ${item.color} p-4 md:p-6 text-white shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl active:scale-95 text-left`}
               >
                 <div className="relative z-10">
@@ -351,6 +386,60 @@ const QuickAccess = () => {
             <p className="text-xs text-gray-500 text-center">
               Scan QR code or use UPI ID to pay your monthly security contribution
             </p>
+          </div>
+        </div>
+      )}
+
+      {/* Welfare Projects Modal */}
+      {showWelfareModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4" onClick={() => setShowWelfareModal(false)}>
+          <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-6 md:p-8 max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-2xl font-bold text-gray-900">✨ Proposed Welfare Projects & Initiated</h3>
+              <button
+                onClick={() => setShowWelfareModal(false)}
+                className="text-gray-400 hover:text-gray-600 transition-colors"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              {welfareProjects.map((project, index) => (
+                <div
+                  key={index}
+                  className={`p-4 rounded-xl border-2 ${
+                    project.status === 'initiated'
+                      ? 'bg-green-50 border-green-200'
+                      : 'bg-amber-50 border-amber-200'
+                  }`}
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="text-3xl flex-shrink-0">{project.icon}</div>
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-gray-900 mb-1">{project.title}</h4>
+                      <span
+                        className={`inline-flex px-3 py-1 text-xs font-semibold rounded-full ${
+                          project.status === 'initiated'
+                            ? 'bg-green-100 text-green-700 border border-green-300'
+                            : 'bg-amber-100 text-amber-700 border border-amber-300'
+                        }`}
+                      >
+                        {project.status === 'initiated' ? '✓ Initiated' : '📋 Proposed'}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-6 pt-6 border-t border-gray-200">
+              <p className="text-xs text-gray-500 text-center">
+                These projects are part of our ongoing efforts to improve community infrastructure and safety.
+              </p>
+            </div>
           </div>
         </div>
       )}

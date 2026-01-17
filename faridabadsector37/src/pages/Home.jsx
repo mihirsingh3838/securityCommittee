@@ -5,7 +5,6 @@ import CommitteeMembers from '../components/CommitteeMembers';
 import GuardDetails from '../components/GuardDetails';
 import SuggestionForm from '../components/SuggestionForm';
 import ComplaintForm from '../components/ComplaintForm';
-import Updates from '../components/Updates';
 
 const Home = () => {
   return (
@@ -103,9 +102,6 @@ const Home = () => {
 
       {/* Suggestion Form Section */}
       <SuggestionForm />
-
-      {/* Updates Section */}
-      <Updates />
 
       {/* Footer */}
       <footer className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-gray-200 text-center px-4">
