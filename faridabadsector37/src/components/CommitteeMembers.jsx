@@ -4,37 +4,37 @@ import api from '../utils/api';
 const CommitteeMembers = () => {
   const [members, setMembers] = useState([
     {
-      house: '-',
+      house: '50',
       mobile: '9868302404',
       name: 'Sh. SM Gupta',
       designation: 'President (Pocket A Security Committee)',
     },
     {
-      house: '-',
+      house: '109',
       mobile: '9717240000',
       name: 'Sh.Ajay Garg',
       designation: 'Vice-President (Pocket A Security Committee)',
     },
     {
-      house: '-',
+      house: '36',
       mobile: '9811094209',
       name: 'Sh. Ajay Gupta',
       designation: 'Treasurer',
     },
     {
-      house: '-',
+      house: '101',
       mobile: '9899970683',
       name: 'Sh. Anuj Gera',
       designation: 'Executive Member',
     },
     {
-      house: '-',
+      house: '144',
       mobile: '9910979587',
       name: 'Sh. Atul Mangla',
       designation: 'Executive Member',
     },
     {
-      house: '-',
+      house: '111',
       mobile: '9716514139',
       name: 'Sh. Anuj Rai',
       designation: 'Executive Member',
