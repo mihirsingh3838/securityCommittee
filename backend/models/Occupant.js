@@ -6,10 +6,14 @@ const occupantSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  ownerName: {
+  floor: String,
+  title: String,
+  name: {
     type: String,
     required: true
   },
+  mobile: String,
+  ownerName: String,
   ownerMobile: String,
   currentOccupant: {
     name: String,
@@ -21,24 +25,10 @@ const occupantSchema = new mongoose.Schema({
     enum: ['owner', 'tenant'],
     default: 'owner'
   },
-  occupancySince: {
-    type: Date,
-    required: true
-  },
-  familyMembers: {
-    type: Number,
-    default: 1
-  },
-  vehicles: [{
-    type: String,
-    number: String
-  }],
-  active: {
-    type: Boolean,
-    default: true
-  }
-}, {
-  timestamps: true
-});
+  occupancySince: Date,
+  familyMembers: { type: Number, default: 1 },
+  vehicles: [{ type: String, number: String }],
+  active: { type: Boolean, default: true }
+}, { timestamps: true });
 
 export default mongoose.model('Occupant', occupantSchema);
